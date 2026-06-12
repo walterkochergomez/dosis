@@ -49,7 +49,7 @@ function actualizarUI() {
 
   penFill.style.width = pct.toFixed(1) + '%';
   levelPct.textContent = Math.round(pct) + '%';
-  tickMax.textContent  = capacidadMaxima.toFixed(1) + ' ml';
+  tickMax.textContent  = capacidadMaxima.toFixed(1) + ' mg';
 
   // Color de la barra según nivel
   penFill.classList.remove('low', 'medium');
@@ -81,7 +81,7 @@ function actualizarUI() {
         <span class="hist-num">Dosis #${realIdx}</span>
         <span class="hist-time">${item.fecha ?? '—'}</span>
       </div>
-      <span class="hist-dose">${parseFloat(item.dosis ?? item).toFixed(2)} ml</span>
+      <span class="hist-dose">${parseFloat(item.dosis ?? item).toFixed(2)} mg</span>
     `;
     historialLista.appendChild(li);
   });
@@ -155,7 +155,7 @@ btnSumarLapiz.addEventListener('click', () => {
 
   const nuevaTotal = parseFloat((remanente + nuevaCapacidad).toFixed(4));
 
-  if (confirm(`¿Agregar ${nuevaCapacidad.toFixed(1)} ml?\nNuevo total: ${nuevaTotal.toFixed(2)} ml`)) {
+  if (confirm(`¿Agregar ${nuevaCapacidad.toFixed(1)} mg?\nNuevo total: ${nuevaTotal.toFixed(2)} mg`)) {
     remanente       = nuevaTotal;
     capacidadMaxima = nuevaTotal; // la nueva capacidad máxima refleja el total
     guardarDatos();
