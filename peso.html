@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolución de Peso</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Librería para el gráfico -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="badge">Registro personal</div>
+      <h1>Evolución de Peso</h1>
+      <p class="subtitle">Seguimiento de tus progresos</p>
+    </header>
+
+    <!-- Navegación -->
+    <nav class="app-nav">
+      <a href="index.html" class="nav-item">💉 Dosis</a>
+      <a href="peso.html" class="nav-item active">⚖️ Peso</a>
+    </nav>
+
+    <!-- Card: Registrar Peso -->
+    <div class="card input-card">
+      <div class="card-header">
+        <div class="icon icon-mint">＋</div>
+        <h3>Registrar peso actual</h3>
+      </div>
+      <div class="card-body">
+        <div class="input-group">
+          <input
+            type="number"
+            id="peso-input"
+            step="0.1"
+            min="0"
+            placeholder="Ej: 75.5"
+            autocomplete="off"
+            inputmode="decimal"
+          >
+          <span class="unit-badge">kg</span>
+        </div>
+
+        <button id="btn-aplicar-peso" class="btn primary">
+          <span>Guardar peso</span>
+        </button>
+        <p id="error-msg-peso" class="error"></p>
+      </div>
+    </div>
+
+    <!-- Card: Gráfico -->
+    <div class="card display-card">
+      <div class="card-header">
+        <div class="icon icon-navy">📈</div>
+        <h2>Curva de evolución</h2>
+      </div>
+      <div class="card-body">
+        <div class="chart-container">
+          <canvas id="pesoChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: Historial de Pesos -->
+    <div class="card history-card">
+      <div class="card-header">
+        <div class="icon icon-amber">📋</div>
+        <h3>Historial de registros</h3>
+      </div>
+      <div class="card-body">
+        <ul id="historial-peso-lista">
+          <!-- JS renders items here -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card: Peligro -->
+    <div class="section-divider">Opciones avanzadas</div>
+    <div class="card danger-card">
+      <div class="card-header">
+        <div class="icon icon-danger">⚠</div>
+        <h3>Gestión de datos</h3>
+      </div>
+      <div class="card-body">
+        <button id="btn-borrar-pesos" class="btn danger-extreme">
+          <span>Borrar historial de peso</span>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+  <script src="peso.js"></script>
+</body>
+</html>
