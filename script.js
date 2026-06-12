@@ -15,6 +15,7 @@ const historialLista = document.getElementById('historial-lista');
 const capacidadInput = document.getElementById('capacidad-input');
 const btnSumarLapiz  = document.getElementById('btn-sumar-lapiz');
 const btnBorrarTodo  = document.getElementById('btn-borrar-todo');
+const clicksDisplay  = document.getElementById('clicks-display');
 
 // ─── Persistencia ────────────────────────────────
 function cargarDatos() {
@@ -105,6 +106,19 @@ function normalizar(item) {
 
 // ─── Eventos ──────────────────────────────────────
 
+// Calcular clicks en tiempo real
+dosisInput.addEventListener('input', () => {
+  const dosis = parseFloat(dosisInput.value);
+  
+  if (!isNaN(dosis) && dosis > 0) {
+    const clicks = Math.round(dosis * 72);
+    clicksDisplay.innerHTML = `Equivale a: <strong>${clicks} click${clicks !== 1 ? 's' : ''}</strong>`;
+    clicksDisplay.style.display = 'block';
+  } else {
+    clicksDisplay.style.display = 'none';
+  }
+});
+
 // Aplicar dosis
 btnAplicar.addEventListener('click', () => {
   const dosis = parseFloat(dosisInput.value);
@@ -122,6 +136,9 @@ btnAplicar.addEventListener('click', () => {
   remanente = parseFloat((remanente - dosis).toFixed(4));
   historial.push({ dosis, fecha: ahoraFormateado() });
   dosisInput.value = '';
+  
+  // Ocultar texto de clicks
+  clicksDisplay.style.display = 'none';
 
   guardarDatos();
   actualizarUI();
