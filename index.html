@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Dosis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="badge">Registro personal</div>
+      <h1>Control de Dosis</h1>
+      <p class="subtitle">Seguimiento de tu lápiz de medicamento</p>
+    </header>
+
+    <!-- Card: Remanente Actual -->
+    <div class="card display-card">
+      <div class="card-header">
+        <div class="icon icon-mint">💉</div>
+        <h2>Remanente actual</h2>
+      </div>
+      <div class="card-body">
+        <div class="remaining-block">
+          <div class="remaining-value">
+            <span id="remanente">4.00</span>
+            <span class="unit">ml</span>
+          </div>
+        </div>
+
+        <!-- Pen Level Bar — signature element -->
+        <div class="pen-level-wrap">
+          <div class="pen-level-label">
+            <span>Nivel del lápiz</span>
+            <span id="level-pct">100%</span>
+          </div>
+          <div class="pen-track">
+            <div class="pen-fill" id="pen-fill" style="width: 100%"></div>
+          </div>
+          <div class="level-ticks">
+            <span>0</span>
+            <span id="tick-max">4.0 ml</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: Registrar Dosis -->
+    <div class="card input-card">
+      <div class="card-header">
+        <div class="icon icon-mint">＋</div>
+        <h3>Registrar dosis</h3>
+      </div>
+      <div class="card-body">
+        <div class="input-group">
+          <input
+            type="number"
+            id="dosis-input"
+            step="0.01"
+            min="0"
+            placeholder="0.25"
+            autocomplete="off"
+            inputmode="decimal"
+          >
+          <span class="unit-badge">ml</span>
+        </div>
+        <button id="btn-aplicar" class="btn primary">
+          <span>Aplicar dosis</span>
+        </button>
+        <p id="error-msg" class="error"></p>
+      </div>
+    </div>
+
+    <!-- Card: Historial -->
+    <div class="card history-card">
+      <div class="card-header">
+        <div class="icon icon-navy">📋</div>
+        <h3>Historial de aplicaciones</h3>
+      </div>
+      <div class="card-body">
+        <ul id="historial-lista">
+          <!-- JS renders items here -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-divider">Gestión del lápiz</div>
+
+    <!-- Card: Nuevo Lápiz -->
+    <div class="card add-card">
+      <div class="card-header">
+        <div class="icon icon-amber">＋</div>
+        <h3>Agregar nuevo lápiz</h3>
+      </div>
+      <div class="card-body">
+        <div class="input-group">
+          <label for="capacidad-input">Capacidad a sumar (ml)</label>
+          <input
+            type="number"
+            id="capacidad-input"
+            step="0.1"
+            value="4.0"
+            min="0.1"
+            inputmode="decimal"
+          >
+        </div>
+        <button id="btn-sumar-lapiz" class="btn secondary">
+          <span>Sumar al remanente</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Card: Peligro -->
+    <div class="card danger-card">
+      <div class="card-header">
+        <div class="icon icon-danger">⚠</div>
+        <h3>Opciones avanzadas</h3>
+      </div>
+      <div class="card-body">
+        <button id="btn-borrar-todo" class="btn danger-extreme">
+          <span>Borrar todos los datos</span>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+  <script src="script.js"></script>
+</body>
+</html>
