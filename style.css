@@ -511,3 +511,26 @@ body {
   .card-body { padding: 14px 18px 20px; }
   .card-header { padding: 18px 18px 0; }
 }
+
+/* ─── Clicks Info ──────────────────────────────── */
+.clicks-info {
+  display: none;
+  font-size: 0.85rem;
+  color: var(--slate);
+  margin-top: -6px;
+  margin-bottom: 12px;
+  text-align: right;
+  padding-right: 4px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.clicks-info strong {
+  color: var(--mint-dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
