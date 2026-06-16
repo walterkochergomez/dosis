@@ -131,7 +131,8 @@ function obtenerFechasFormateadas() {
 
 // ─── Eventos ──────────────────────────────────────
 btnAplicarPeso.addEventListener('click', () => {
-  const peso = parseFloat(pesoInput.value);
+  const valorLimpio = pesoInput.value.replace(',', '.');
+  const peso = parseFloat(valorLimpio);
   errorMsgPeso.textContent = '';
 
   if (isNaN(peso) || peso <= 10) {
