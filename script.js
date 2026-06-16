@@ -96,7 +96,6 @@ function ahoraFormateado() {
 }
 
 // ─── Normalizar historial heredado ────────────────
-// (por si ya había datos guardados sin timestamp)
 function normalizar(item) {
   if (typeof item === 'number') {
     return { dosis: item, fecha: '—' };
@@ -108,7 +107,8 @@ function normalizar(item) {
 
 // Calcular clicks en tiempo real
 dosisInput.addEventListener('input', () => {
-  const dosis = parseFloat(dosisInput.value);
+  const valorLimpio = dosisInput.value.replace(',', '.');
+  const dosis = parseFloat(valorLimpio);
   
   if (!isNaN(dosis) && dosis > 0) {
     const clicks = Math.round(dosis * 72);
@@ -121,7 +121,8 @@ dosisInput.addEventListener('input', () => {
 
 // Aplicar dosis
 btnAplicar.addEventListener('click', () => {
-  const dosis = parseFloat(dosisInput.value);
+  const valorLimpio = dosisInput.value.replace(',', '.');
+  const dosis = parseFloat(valorLimpio);
   errorMsg.textContent = '';
 
   if (isNaN(dosis) || dosis <= 0) {
@@ -146,7 +147,8 @@ btnAplicar.addEventListener('click', () => {
 
 // Sumar nuevo lápiz
 btnSumarLapiz.addEventListener('click', () => {
-  const nuevaCapacidad = parseFloat(capacidadInput.value);
+  const valorLimpio = capacidadInput.value.replace(',', '.');
+  const nuevaCapacidad = parseFloat(valorLimpio);
 
   if (isNaN(nuevaCapacidad) || nuevaCapacidad <= 0) {
     alert('Ingresa una capacidad válida para el nuevo lápiz.');
@@ -175,7 +177,6 @@ btnBorrarTodo.addEventListener('click', () => {
 });
 
 // ─── Init ─────────────────────────────────────────
-// Normalizar datos viejos al cargar
 const raw = localStorage.getItem('lapizMedicamento');
 if (raw) {
   const datos = JSON.parse(raw);
